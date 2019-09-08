@@ -33,8 +33,8 @@ console.groupEnd()
 console.group("Enclosed")
 function enclosedFunction () {  // memory alloc
     let counter = 0
-    let Increment = () => {     // scope and memory is enclosed within the wrapping function
-        counter++
+    let Increment = () => {     // Closure: scope and memory is enclosed within the wrapping function
+        counter++               // has access to its own scope, outer function variables/parameters and global variables
         console.log(counter);
     }
     return {Increment}
