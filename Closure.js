@@ -61,12 +61,20 @@ console.groupEnd()
 console.group("Classes & Closure")
 
 class Object {                  // start a closure in global context
+    
+    // private class field from t39/stage3 as of now
+    // #b
+
     constructor(a, b) {
         // public
         this._a = a
         // "private" -> closure variable, can't be access from outside
         let _b = b
-        
+        // true private from the t39/stage3 
+        // this.#b = b
+        // or simply
+        // #b = b
+
         this.sumFunction = () => {     // start of another closure
             // has access to this, a, b, _b
             this._a = this._a + _b
@@ -89,6 +97,9 @@ class Object {                  // start a closure in global context
 function createObject(a, b) {      // start a closure
     let obj = new Object(a, b)     // this instantiate "create" 2 closures, see above & alloc memory
     console.log(obj)
+    console.log(obj._a)            // return 5
+    console.log(obj._b)            // return undefined since "private"
+    //console.log(obj.#b)           // return undefined since private
     obj = ""                       // free alloc memory
 }
 
